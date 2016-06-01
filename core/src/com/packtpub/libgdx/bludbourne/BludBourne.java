@@ -1,5 +1,7 @@
 package com.packtpub.libgdx.bludbourne;
 
+import com.packtpub.libgdx.bludbourne.screens.MainGameScreen;
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
