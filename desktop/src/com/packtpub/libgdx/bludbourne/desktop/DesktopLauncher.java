@@ -24,5 +24,7 @@ public class DesktopLauncher {
 		Gdx.app.setLogLevel(Application.LOG_DEBUG);
 		//Gdx.app.setLogLevel(Application.LOG_ERROR);
 		//Gdx.app.setLogLevel(Application.LOG_NONE);
+
+		//hello
 	}
 }
