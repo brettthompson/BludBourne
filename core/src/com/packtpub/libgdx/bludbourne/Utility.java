@@ -86,7 +86,28 @@ public final class Utility {
                 return;
             }
             //load asset
-            if( _filePathResolver.resolve(textureFilenamePath).exists() ){
-                _assetManager.setLoader(Texture.class, new TextureLoader (_filePathResolver));
+            if( _filePathResolver.resolve(textureFilenamePath).exists() ) {
+                _assetManager.setLoader(Texture.class, new TextureLoader(_filePathResolver));
+
+                _assetManager.load(textureFilenamePath, Texture.class);
+                // until we add loading screen,
+                // just block until we load map
+                _assetManager.finishLoadingAsset(textureFilenamePath);
             }
+            else{
+                Gdx.app.debug(TAG, "Texture doesn't exist!: " +textureFilenamePath );
+                }
+            }
+        public static Texture getTextureAsset(String textureFilenamePath){
+            Texture texture = null;
+
+            //once the asset manager is done loading
+            if(_assetManager.isLoaded(textureFilenamePath) ){
+                texture =
+                        _assetManager.get(textureFilenamePath,Texture.class);
+            } else {
+                Gdx.app.debug(TAG, "Texture is not loaded: " + textureFilenamePath );
+            }
+            return texture;
+        }
         }
