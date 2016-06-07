@@ -1,12 +1,12 @@
 /**
  * Created by brett on 6/5/2016.
  */
-package com.packtub.libgdx.bludbourne;
+package com.packtpub.libgdx.bludbourne;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import com.badlogic.Gdx;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.math.Vector3;
@@ -106,8 +106,8 @@ public class PlayerController implements InputProcessor {
             this.selectMouseButtonPressed(screenX, screenY);
         }
 
-        if( button == Input.Buttons.Right){
-            thiis.doActionMouseButtonPressed(screenX, screenY);
+        if( button == Input.Buttons.RIGHT){
+            this.doActionMouseButtonPressed(screenX, screenY);
         }
         return true;
     }
@@ -116,7 +116,7 @@ public class PlayerController implements InputProcessor {
     public boolean touchUp(int screenX, int screenY, int pointer, int button) {
         //left is selection, right is context menu
         if( button == Input.Buttons.LEFT){
-            this.selectMouseButtonReleased(screenX, screenY);
+            this.selectedMouseButtonReleased(screenX, screenY);
         }
         if( button == Input.Buttons.RIGHT){
             this.doActionMouseButtonReleased(screenX, screenY);
@@ -211,19 +211,13 @@ public class PlayerController implements InputProcessor {
         processInput(delta);
     }
 
-    public static void hide(){
-        keys.put(Keys.LEFT, false);
-        keys.put(Keys.RIGHT, false);
-        keys.put(Keys.UP, false);
-        keys.put(Keys.DOWN, false);
-        keys.put(Keys.QUIT, false);
-    }
+
 
     private void processInput(float delta){
 
         // keyboard input
         if( keys.get(Keys.LEFT)){
-            _player.calculateNextPosition(Entitiy.Direction.LEFT, delta);
+            _player.calculateNextPosition(Entity.Direction.LEFT, delta);
             _player.setState(Entity.State.WALKING);
             _player.setDirection(Entity.Direction.LEFT, delta);
         } else if( keys.get(Keys.RIGHT)){
@@ -235,13 +229,13 @@ public class PlayerController implements InputProcessor {
             _player.setState(Entity.State.WALKING);
             _player.setDirection(Entity.Direction.UP, delta);
         } else if(keys.get(Keys.DOWN)){
-            _player.calculateNextPositon(Entity.Direction.DOWN, delta);
+            _player.calculateNextPosition(Entity.Direction.DOWN, delta);
             _player.setState(Entity.State.WALKING);
             _player.setDirection(Entity.Direction.DOWN, delta);
         } else if(keys.get(Keys.QUIT)){
             Gdx.app.exit();
         } else{
-            _player.setState(Entity.Sate.IDLE);
+            _player.setState(Entity.State.IDLE);
         }
 
         //mouse input

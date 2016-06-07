@@ -13,7 +13,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
-import javafx.animation.Animation;
+
 
 public class Entity {
 
@@ -66,13 +66,14 @@ public class Entity {
         this.boundingBox = new Rectangle();
         this._velocity = new Vector2(2f,2f);
 
+
         Utility.loadTextureAsset(_defaultSpritePath);
         loadDefaultSprite();
-        laodAllAnimations();
+        loadAllAnimations();
     }
 
     public void update(float delta){
-        _FrameTime = (_frameTime + delta)%5; // want to avoid overflow
+        _frameTime = (_frameTime + delta)%5; // want to avoid overflow
 
         // we want the hitbox to be at to be at the feet for a better feel
         setBoundingBoxSize(0f, 0.5f);
@@ -86,7 +87,7 @@ public class Entity {
         this._nextPlayerPosition.y = startY;
     }
 
-    public void setBoundingBoxSize(float percentageWidthReduced, float percentageHeight){
+    public void setBoundingBoxSize(float percentageWidthReduced, float percentageHeightReduced){
         // update the current bounding box
         float width;
         float height;
@@ -169,7 +170,7 @@ public class Entity {
             }
         }
 
-        _walkDownAnimation = new Animation(0.25f, _walkDownFrames, Animation.PlayeMode.LOOP);
+        _walkDownAnimation = new Animation(0.25f, _walkDownFrames, Animation.PlayMode.LOOP);
         _walkLeftAnimation = new Animation(0.25f, _walkLeftFrames, Animation.PlayMode.LOOP);
         _walkRightAnimation = new Animation(0.25f, _walkRightFrames, Animation.PlayMode.LOOP);
         _walkUpAnimation = new Animation(0.25f, _walkUpFrames, Animation.PlayMode.LOOP);
@@ -189,6 +190,10 @@ public void dispose(){
 
     public TextureRegion getFrame(){
         return _currentFrame;
+    }
+
+    public Vector2 getCurrentPosition(){
+        return _currentPlayerPosition;
     }
 
     public void setCurrentPosition(float currentPositionX, float currentPositionY){
@@ -226,7 +231,7 @@ public void dispose(){
     }
 
     public void calculateNextPosition(Direction currentDirection, float deltaTime){
-        float textX = _currentPlayerPosition.x;
+        float testX = _currentPlayerPosition.x;
         float testY = _currentPlayerPosition.y;
 
         _velocity.scl(deltaTime);

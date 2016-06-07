@@ -1,7 +1,8 @@
 /**
  * Created by brett on 6/6/2016.
- */
-package com.packptub.libgdx.bludbourne;
+ *//*
+
+package com.packtpub.libgdx.bludbourne;
 
 import com.badlogic.gdx.utils.Json;
 
@@ -42,3 +43,4 @@ public class EntityFactory {
         }
     }
 }
+*/

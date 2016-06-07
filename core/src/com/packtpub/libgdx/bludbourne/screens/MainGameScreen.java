@@ -7,18 +7,17 @@ package com.packtpub.libgdx.bludbourne.screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
-import com.badlogic.gdx.maps.tiled.renderers.
-
-OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Rectangle;
-import com.packtub.libgdx.bludbourne.Entity;
-import com.packtub.libgdx.bludbourne.MapManager;
-import com.packtub.libgdx.blubourne.PlayerController;
+import com.packtpub.libgdx.bludbourne.Entity;
+import com.packtpub.libgdx.bludbourne.MapManager;
+import com.packtpub.libgdx.bludbourne.PlayerController;
 
 public class MainGameScreen implements Screen {
     private static final String TAG =
@@ -62,16 +61,16 @@ public class MainGameScreen implements Screen {
                 (_mapMgr.getCurrentMap(), MapManager.UNIT_SCALE);
         _mapRenderer.setView(_camera);
 
-        Gdx.app.debug(TAG, 'UnitScale value is: ' + _mapRenderer.getUnitScale());
+        Gdx.app.debug(TAG, "UnitScale value is: " + _mapRenderer.getUnitScale());
 
         _player = new Entity();
         _player.init(_mapMgr.getPlayerStartUnitScaled().x,
-                mapMgr.getPlayerStartUnitScaled().y);
+                _mapMgr.getPlayerStartUnitScaled().y);
 
         _currentPlayerSprite = _player.getFrameSprite();
 
         _controller = new PlayerController(_player);
-        Gdx.input.setInputProcesor(_controller);
+        Gdx.input.setInputProcessor(_controller);
     }
 
     @Override
@@ -86,7 +85,7 @@ public class MainGameScreen implements Screen {
         // preferable to lock and center the _camera to the player's position
 
         _camera.position.set(_currentPlayerSprite.getX(),
-                _currentPlayerSprite.getY(), Of);
+                _currentPlayerSprite.getY(), 0f);
 
         _camera.update();
 
@@ -211,7 +210,7 @@ public class MainGameScreen implements Screen {
                     _mapMgr.loadMap(mapName);
                     _player.init(_mapMgr.getPlayerStartUnitScaled().x,
                             _mapMgr.getPlayerStartUnitScaled().y);
-                    _mapRenderer.setMap(_mapMgr.getCurrentMap());\
+                    _mapRenderer.setMap(_mapMgr.getCurrentMap());
 
                     Gdx.app.debug(TAG, "Portal Activated");
                     return true;
