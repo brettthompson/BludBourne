@@ -1,6 +1,6 @@
 /**
  * Created by brett on 6/6/2016.
- *//*
+ */
 
 package com.packtpub.libgdx.bludbourne;
 
@@ -43,4 +43,4 @@ public class EntityFactory {
         }
     }
 }
-*/
+

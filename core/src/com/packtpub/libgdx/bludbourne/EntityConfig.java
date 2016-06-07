@@ -1,10 +1,10 @@
-/*
+
 package com.packtpub.libgdx.bludbourne;
 
 import com.badlogic.gdx.math.GridPoint2;
 import com.badlogic.gdx.utils.Array;
 
-//import com.packtpub.libgdx.bludbourne.Entity.AnimationType;
+import com.packtpub.libgdx.bludbourne.Entity.AnimationType;
 
 
 public class EntityConfig {
@@ -95,4 +95,4 @@ public class EntityConfig {
     }
 
 }
-*/
+
