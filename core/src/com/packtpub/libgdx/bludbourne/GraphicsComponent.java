@@ -85,7 +85,7 @@ public abstract class GraphicsComponent implements Component {
                     _currentFrame = animation.getKeyFrame(_frameTime);
                 }
                 break;
-            Case RIGHT:
+            case RIGHT:
             if (_currentState == Entity.State.WALKING) {
                 Animation animation = _animations.get(Entity.AnimationType.WALK_RIGHT);
                 if( animation == null ) return;
