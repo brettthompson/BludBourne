@@ -1,6 +1,8 @@
 /**
  * Created by brett on 6/8/2016.
  */
+package com.packtpub.libgdx.bludbourne;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.MapObject;
