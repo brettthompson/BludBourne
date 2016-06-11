@@ -23,6 +23,23 @@ public class MainGameScreen implements Screen {
     private static final String TAG =
             MainGameScreen.class.getSimpleName();
 
+    private OrthographicCamer _hudCamera = null;
+    private InputMultiplexer _multiplexer;
+    private static PlayerHUD _playerHUD;
+
+    public MainGameScreen(BludBourne game){
+        //...
+        _hudCamera = new OrthographicCamera();
+        _hudCamera.setToOrtho(false, VIEWPORT.physicalWidth, VIEWPORT.physicalHeight);
+        _playerHUD = new PlayerHUD(_hudCamera, _player);
+
+        _multiplexer = new InputMultiplexer();
+        _multiplexer.addProcessor(_playerHUD.getStage());
+        _multiplexer.addProcessor(_player.getInputProcessor());
+        Gdx.input.setInputProcessor(_multiplexer);
+        //...
+    }
+
     private static class VIEWPORT {
         static float viewportWidth;
         static float viewportHeight;
